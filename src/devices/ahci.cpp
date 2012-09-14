@@ -192,7 +192,7 @@ void ahci::start_measurement(void)
 #ifndef DISABLE_TRYCATCH
 	}
 	catch (std::ios_base::failure &c) {
-		fprintf(stderr, "%s\n", c.what());
+		fprintf(stderr, "Failed to start measurement for ahci device\n");
 	}
 #endif
 }
@@ -235,7 +235,7 @@ void ahci::end_measurement(void)
 #ifndef DISABLE_TRYCATCH
 	}
 	catch (std::ios_base::failure &c) {
-		fprintf(stderr, "%s\n", c.what());
+		fprintf(stderr, "Failed to end measurement for ahci device\n");
 	}
 #endif
 	if (end_active < start_active)
