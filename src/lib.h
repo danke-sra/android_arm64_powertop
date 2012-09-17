@@ -35,6 +35,10 @@
 #include "config.h"
 #endif
 
+#ifdef __ANDROID__
+#include "android_stubs.h"
+#endif
+
 #ifdef ENABLE_NLS
 #define _(STRING)    gettext(STRING)
 #else
