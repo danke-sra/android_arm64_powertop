@@ -25,7 +25,6 @@
 #ifndef INCLUDE_GUARD_LIB_H
 #define INCLUDE_GUARD_LIB_H
 
-#include <libintl.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <cstring>
@@ -37,6 +36,8 @@
 
 #ifdef __ANDROID__
 #include "android_stubs.h"
+#else
+#include <libintl.h>
 #endif
 
 #ifdef ENABLE_NLS

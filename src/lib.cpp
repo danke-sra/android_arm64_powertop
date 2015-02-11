@@ -53,12 +53,15 @@ extern "C" {
 #include <sys/stat.h>
 #include <dirent.h>
 #include <locale.h>
-#include <libintl.h>
 #include <limits>
 #include <math.h>
 #include <ncurses.h>
 #include <fcntl.h>
 #include <glob.h>
+
+#ifndef __ANDROID__
+#include <libintl.h>
+#endif
 
 static int kallsyms_read = 0;
 
