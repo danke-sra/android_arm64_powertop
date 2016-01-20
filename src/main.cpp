@@ -431,8 +431,9 @@ int main(int argc, char **argv)
 	char workload[PATH_MAX] = {0};
 	int  iterations = 1, auto_tune = 0, sample_interval = 5;
 
+#ifndef ANDROID
 	set_new_handler(out_of_memory);
-
+#endif
 	setlocale (LC_ALL, "");
 
 #ifdef ENABLE_NLS
