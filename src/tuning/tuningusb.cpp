@@ -33,7 +33,7 @@
 #include <iostream>
 #include <fstream>
 #include <limits.h>
-
+#include <ctype.h>
 #include "../lib.h"
 
 usb_tunable::usb_tunable(const char *path, const char *name) : tunable("", 0.9, _("Good"), _("Bad"), _("Unknown"))
