@@ -75,7 +75,6 @@ LOCAL_SRC_FILES += \
 	src/tuning/ethernet.cpp \
 	src/tuning/runtime.cpp \
 	src/tuning/iw.c \
-	src/tuning/iw.h \
 	src/tuning/tunable.cpp \
 	src/tuning/tuningsysfs.cpp \
 	src/tuning/cpufreq.cpp \
@@ -98,8 +97,6 @@ LOCAL_SRC_FILES += \
 	src/calibrate/calibrate.cpp \
 	src/lib.cpp \
 	traceevent/event-parse.c \
-	traceevent/event-parse.h \
-	traceevent/event-utils.h \
 	traceevent/parse-filter.c \
 	traceevent/parse-utils.c \
 	traceevent/trace-seq.c
