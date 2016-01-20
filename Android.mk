@@ -71,7 +71,6 @@ LOCAL_SRC_FILES += \
 	src/main.cpp \
 	src/tuning/tuning.cpp \
 	src/tuning/tuningi2c.cpp \
-	src/tuning/usb.cpp \
 	src/tuning/tuningusb.cpp \
 	src/tuning/bluetooth.cpp \
 	src/tuning/ethernet.cpp \
