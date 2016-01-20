@@ -176,13 +176,17 @@ void write_sysfs(const string &filename, const string &value)
 	file.open(filename.c_str(), ios::out);
 	if (!file)
 		return;
+#ifndef DISABLE_TRYCATCH
 	try
 	{
+#endif
 		file << value;
 		file.close();
+#ifndef DISABLE_TRYCATCH
 	} catch (std::exception &exc) {
 		return;
 	}
+#endif
 }
 
 int read_sysfs(const string &filename, bool *ok)
@@ -196,16 +200,20 @@ int read_sysfs(const string &filename, bool *ok)
 			*ok = false;
 		return 0;
 	}
+#ifndef DISABLE_TRYCATCH
 	try
 	{
+#endif
 		file >> i;
 		if (ok)
 			*ok = true;
+#ifndef DISABLE_TRYCATCH
 	} catch (std::exception &exc) {
 		if (ok)
 			*ok = false;
 		i = 0;
 	}
+#endif
 	file.close();
 	return i;
 }
@@ -219,17 +227,21 @@ string read_sysfs_string(const string &filename)
 	file.open(filename.c_str(), ios::in);
 	if (!file)
 		return "";
+#ifndef DISABLE_TRYCATCH
 	try
 	{
+#endif
 		file.getline(content, 4096);
 		file.close();
 		c = strchr(content, '\n');
 		if (c)
 			*c = 0;
+#ifndef DISABLE_TRYCATCH
 	} catch (std::exception &exc) {
 		file.close();
 		return "";
 	}
+#endif
 	return content;
 }
 
@@ -246,17 +258,21 @@ string read_sysfs_string(const char *format, const char *param)
 	file.open(filename, ios::in);
 	if (!file)
 		return "";
+#ifndef DISABLE_TRYCATCH
 	try
 	{
+#endif
 		file.getline(content, 4096);
 		file.close();
 		c = strchr(content, '\n');
 		if (c)
 			*c = 0;
+#ifndef DISABLE_TRYCATCH
 	} catch (std::exception &exc) {
 		file.close();
 		return "";
 	}
+#endif
 	return content;
 }
 
