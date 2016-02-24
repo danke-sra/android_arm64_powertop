@@ -5,8 +5,7 @@ LOCAL_MODULE := powertop
 
 LOCAL_MODULE_TAGS := debug
 LOCAL_SHARED_LIBRARIES := libstlport \
-			  libnl \
-			  libpci \
+			  libnl
 
 LOCAL_STATIC_LIBRARIES := libncurses
 
@@ -23,7 +22,8 @@ LOCAL_GENERATED_SOURCES += $(GEN_CSS_H)
 #LOCAL_CFLAGS += -Wall -O2 -g -fno-omit-frame-pointer -fstack-protector -Wshadow -Wformat -D_FORTIFY_SOURCE=2
 #LOCAL_CPPFLAGS += -Wall -O2 -g -fno-omit-frame-pointer
 
-LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH
+LOCAL_CFLAGS += -DHAVE_LIBNL20 -fexceptions
+LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH -DHAVE_NO_PCI
 
 LOCAL_C_INCLUDES += external/stlport/stlport/ \
 	external/stlport/stlport/stl \
