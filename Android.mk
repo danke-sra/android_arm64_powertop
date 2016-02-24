@@ -59,6 +59,7 @@ LOCAL_SRC_FILES += \
 	src/measurement/sysfs.cpp \
 	src/measurement/extech.cpp \
 	src/measurement/sysfs.cpp \
+        src/measurement/opal-sensors.cpp \
 	src/display.cpp \
 	src/report/report.cpp \
 	src/report/report-maker.cpp \
