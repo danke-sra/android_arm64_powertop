@@ -11,10 +11,9 @@ LOCAL_STATIC_LIBRARIES := libncurses
 
 CSSTOH_SOURCE := $(LOCAL_PATH)/src/csstoh.c
 POWERTOP_CSS_SOURCE := $(LOCAL_PATH)/src/powertop.css
-GEN_CSSTOH := $(LOCAL_PATH)/src/csstoh
+GEN_CSSTOH := $(LOCAL_PATH)/src/csstoh.sh
 GEN_CSS_H := $(LOCAL_PATH)/src/css.h
 $(GEN_CSS_H):
-	$(CC) -o $(GEN_CSSTOH) $(CSSTOH_SOURCE)
 	./$(GEN_CSSTOH) $(POWERTOP_CSS_SOURCE) $@
 
 LOCAL_GENERATED_SOURCES += $(GEN_CSS_H)
@@ -22,7 +21,7 @@ LOCAL_GENERATED_SOURCES += $(GEN_CSS_H)
 #LOCAL_CFLAGS += -Wall -O2 -g -fno-omit-frame-pointer -fstack-protector -Wshadow -Wformat -D_FORTIFY_SOURCE=2
 #LOCAL_CPPFLAGS += -Wall -O2 -g -fno-omit-frame-pointer
 
-LOCAL_CFLAGS += -DHAVE_LIBNL20 -fexceptions
+LOCAL_CFLAGS += -DHAVE_LIBNL20
 LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH -DHAVE_NO_PCI
 
 LOCAL_C_INCLUDES += external/stlport/stlport/ \
@@ -31,8 +30,8 @@ LOCAL_C_INCLUDES += external/stlport/stlport/ \
 	bionic \
 	external/libnl/include/ \
 	external/ncurses/include \
-	external/elfutils/bionic-fixup \
-	$(LOCAL_PATH)/src
+	$(LOCAL_PATH)/src \
+	$(LOCAL_PATH)/traceevent
 
 LOCAL_SRC_FILES += \
 	src/parameters/parameters.cpp \
@@ -58,7 +57,6 @@ LOCAL_SRC_FILES += \
 	src/cpu/rapl/rapl_interface.cpp \
 	src/measurement/measurement.cpp \
 	src/measurement/acpi.cpp \
-	src/measurement/sysfs.cpp \
 	src/measurement/extech.cpp \
 	src/measurement/sysfs.cpp \
         src/measurement/opal-sensors.cpp \
@@ -94,6 +92,7 @@ LOCAL_SRC_FILES += \
 	src/devices/network.cpp \
 	src/devices/device.cpp \
 	src/devices/gpu_rapl_device.cpp \
+	src/devices/devfreq.cpp \
 	src/devlist.cpp \
 	src/calibrate/calibrate.cpp \
 	src/lib.cpp \
