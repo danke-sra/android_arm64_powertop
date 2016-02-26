@@ -1,5 +1,6 @@
 #include <linux/ethtool.h>
 #include <sys/socket.h>
+#include <string>
 
 /* Android doesn't provide locale support int its C and C++
  * runtime. Handled at higher level in application stack.
@@ -11,8 +12,10 @@
 #define textdomain(x)
 #define gettext(x)		(x)
 
-/* Android C++ new operator does not throw exception on failure */
+#ifndef _LIBCPP_VERSION
+/* STLport C++ new operator does not throw exception on failure */
 #define set_new_handler(x)
+#endif
 
 /* define stubs for C++ exception handling */
 #define try     	if (true)
