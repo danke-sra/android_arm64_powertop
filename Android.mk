@@ -4,10 +4,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := powertop
 
 LOCAL_MODULE_TAGS := debug
-LOCAL_SHARED_LIBRARIES := libstlport \
-			  libnl
-
-LOCAL_STATIC_LIBRARIES := libncurses
+LOCAL_SHARED_LIBRARIES := libnl libncurses
 
 CSSTOH_SOURCE := $(LOCAL_PATH)/src/csstoh.c
 POWERTOP_CSS_SOURCE := $(LOCAL_PATH)/src/powertop.css
@@ -24,10 +21,7 @@ LOCAL_GENERATED_SOURCES += $(GEN_CSS_H)
 LOCAL_CFLAGS += -DHAVE_LIBNL20
 LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH -DHAVE_NO_PCI
 
-LOCAL_C_INCLUDES += external/stlport/stlport/ \
-	external/stlport/stlport/stl \
-	external/stlport/stlport/using/h/ \
-	bionic \
+LOCAL_C_INCLUDES += bionic \
 	external/libnl/include/ \
 	external/ncurses/include \
 	$(LOCAL_PATH)/src \
