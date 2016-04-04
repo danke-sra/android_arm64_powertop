@@ -57,6 +57,8 @@ powertop_SOURCES = \
 	devices/thinkpad-fan.h \
 	devices/thinkpad-light.cpp \
 	devices/thinkpad-light.h \
+	devices/usb.h \
+	devices/usb.cpp \
 	measurement/acpi.cpp \
 	measurement/acpi.h \
 	measurement/extech.cpp \
