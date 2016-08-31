@@ -18,8 +18,10 @@ LOCAL_GENERATED_SOURCES += $(GEN_CSS_H)
 #LOCAL_CFLAGS += -Wall -O2 -g -fno-omit-frame-pointer -fstack-protector -Wshadow -Wformat -D_FORTIFY_SOURCE=2
 #LOCAL_CPPFLAGS += -Wall -O2 -g -fno-omit-frame-pointer
 
-LOCAL_CFLAGS += -DHAVE_LIBNL20
-LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH -DHAVE_NO_PCI
+SUPPRESS_WERROR = -Wno-error=date-time -Wno-error -Wno-error=uninitialized -Wno-error=maybe-uninitialized -w -Wno-error=pointer-arith -Wno-error=int-to-pointer-cast -Wno-error=missing-field-initializers -Wno-error=sign-compare
+
+LOCAL_CFLAGS += -DHAVE_LIBNL20 -D__POSIX_VISIBLE=200000 -D__BSD_VISIBLE $(SUPPRESS_WERROR)
+LOCAL_CPPFLAGS += -DPACKAGE_VERSION=\"2.8\" -DPACKAGE=powertop -DHAVE_LIBNL20 -DDISABLE_TRYCATCH -DHAVE_NO_PCI -Wno-error=date-time -D__POSIX_VISIBLE=200000 -D__BSD_VISIBLE $(SUPPRESS_WERROR)
 
 LOCAL_C_INCLUDES += bionic \
 	external/libnl/include/ \
@@ -90,6 +92,7 @@ LOCAL_SRC_FILES += \
 	src/devlist.cpp \
 	src/calibrate/calibrate.cpp \
 	src/lib.cpp \
+        src/glob.c \
 	traceevent/event-parse.c \
 	traceevent/parse-filter.c \
 	traceevent/parse-utils.c \
